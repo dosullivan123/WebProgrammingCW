@@ -24,3 +24,5 @@ Element damage:
 
 The users will have the ability to pick what damage type there take uses. However this will work like a rock, paper, scissors system in which your type of damage will be super effective against certain other tanks but you will also be super vulnerable to one other damage type. 
 
+Branches:
+I created a new branch of git for myself where i will upload. We should all have our own ones, instead of all commiting to master. We will commit things we all agree to onto the master branch 
