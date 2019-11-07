@@ -1,41 +1,82 @@
-<<canvas id="ctx" width="500" height="500" style="border:5px solid #000000"></canvas>
+<html>
 
 
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <head>
+    <link rel="stylesheet" href="stylesheet1.css">
+  </head>
+  <body>
+
+    <main> 
+      <!- Container and overlay for the screen ->
+      <div id="canvasC">
+      <div id="canvasO"> 
+      
+      <canvas id="ctx" width="720" height="670" style="border:5px solid #000000"></canvas>
+      </div>
+      </div>
+
+      <!- Container for buttons on the left side ->
+      <div id="leftbuttonC">
+        <div id="startC"> <h5 class="buttontext">START</h5> </div>
+        <div id="leaderC"> <h5 class="buttontext"> LEADERBOARD </h5> </div>
+      </div>
+
+      <!- container for right side leader board ->
+      <div id="rightsideC">
+        <img  id="trophyimg" src="trophy.png"> </img>
+        <div id="currentchamp">
+          <h5 class="buttontext"> CURRENT CHAMP </h5>
+        </div>
+      
+
+      </div>
 
 
-<script>
-  var ctx = document.getElementById("ctx").getContext("2d");
-  ctx.font = '30px Arial';
-  var socket = io();
-
-  socket.on('newPositions', function(data){
-    ctx.clearRect(0,0,500,500);
-    for(var i = 0; i < data.length; i++)
-      ctx.fillText(data[i].number,data[i].x,data[i].y);
-  });
-
-  document.onkeydown = function(event){
-    if(event.keyCode === 87)
-      socket.emit('keyPress',{inputID:'up',state:true});
-    else if(event.keyCode === 83)
-      socket.emit('keyPress',{inputID:'down',state:true});
-    else if(event.keyCode === 68)
-      socket.emit('keyPress',{inputID:'right',state:true});
-    else if(event.keyCode === 65)
-      socket.emit('keyPress',{inputID:'left',state:true});
-  }
-
-  document.onkeyup = function(event){
-    if(event.keyCode === 87)
-      socket.emit('keyPress',{inputID:'up',state:false});
-    else if(event.keyCode === 83)
-      socket.emit('keyPress',{inputID:'down',state:false});
-    else if(event.keyCode === 68)
-      socket.emit('keyPress',{inputID:'right',state:false});
-    else if(event.keyCode === 65)
-      socket.emit('keyPress',{inputID:'left',state:false});
-  }
+  
+        
+      
 
 
-</script>
+
+    </main>
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+
+    <script>
+      var ctx = document.getElementById("ctx").getContext("2d");
+      ctx.font = '30px Arial';
+      var socket = io();
+
+      socket.on('newPositions', function(data){
+        ctx.clearRect(0,0,500,500);
+        for(var i = 0; i < data.length; i++)
+          ctx.fillText(data[i].number,data[i].x,data[i].y);
+      });
+
+      document.onkeydown = function(event){
+        if(event.keyCode === 87)
+          socket.emit('keyPress',{inputID:'up',state:true});
+        else if(event.keyCode === 83)
+          socket.emit('keyPress',{inputID:'down',state:true});
+        else if(event.keyCode === 68)
+          socket.emit('keyPress',{inputID:'right',state:true});
+        else if(event.keyCode === 65)
+          socket.emit('keyPress',{inputID:'left',state:true});
+      }
+
+      document.onkeyup = function(event){
+        if(event.keyCode === 87)
+          socket.emit('keyPress',{inputID:'up',state:false});
+        else if(event.keyCode === 83)
+          socket.emit('keyPress',{inputID:'down',state:false});
+        else if(event.keyCode === 68)
+          socket.emit('keyPress',{inputID:'right',state:false});
+        else if(event.keyCode === 65)
+          socket.emit('keyPress',{inputID:'left',state:false});
+      }
+
+
+    </script>
+  </body>
+</html>
