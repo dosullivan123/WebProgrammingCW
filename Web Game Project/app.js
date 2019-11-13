@@ -103,9 +103,8 @@ io.sockets.on('connection', function(socket){
   socket.id = Math.random();
   SOCKET_LIST[socket.id] = socket;
 
+  Player.onConnect(socket);
 
-
-Player.onConnect(socket);
   socket.on('disconnect',function(){
     delete SOCKET_LIST[socket.id];
     Player.onDisconnect(socket);
