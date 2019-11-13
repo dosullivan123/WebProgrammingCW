@@ -3,14 +3,11 @@ var express = require('express');
 var app = express();
 var serv = require('http').Server(app);
 
-app.use(express.static('public'));
 
 app.get('/',function(reg, res) {
     res.sendFile(__dirname + '/client/index.html');
 });
 app.use('client',express.static(__dirname + '/client'));
-
-app.use(express.static('public'));
 
 serv.listen(2000);
 console.log("Server Started")
