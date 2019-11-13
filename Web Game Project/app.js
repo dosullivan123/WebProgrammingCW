@@ -66,7 +66,7 @@ var Player = function(id){
     Player_list[socket.id] = self;
   return self;
 }
-Player_list = ();
+Player_list = {};
 Player.onConnect = function(socket){
   socket.on('keyPress',function(data){
     var player = Player(socket.id);
