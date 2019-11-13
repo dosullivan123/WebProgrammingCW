@@ -32,6 +32,7 @@ var Entity = function(){
   return self;
 }
 
+
 var Player = function(id){
     var self = Entity();
     self.id = id;
@@ -63,8 +64,8 @@ var Player = function(id){
       else
         self.speedY = 0;
       }
-    Player_list[socket.id] = self;
-  return self;
+      Player.list[id] = self;
+      return self;
 }
 Player_list = {};
 Player.onConnect = function(socket){
