@@ -15,28 +15,54 @@ console.log("Server Started")
 var SOCKET_LIST = {};
 var PLAYER_LIST = {};
 
-var Player = function(id){
+var Entity = function(){
   var self = {
     x:250,
     y:250,
-    id:id,
-    number:"" + Math.floor(10 * Math.random()),
-    pressingUp:false,
-    pressingDown:false,
-    pressingRight:false,
-    pressingLeft:false,
-    maxSpeed:10,
+    speedX:0,
+    speedY:0,
+    id:"",
+  }
+  self.update = function(){
+    self.updatePosition();
   }
   self.updatePosition = function(){
-    if(self.pressingUp)
-      self.y -= self.maxSpeed;
-    if(self.pressingDown)
-      self.y += self.maxSpeed;
-    if(self.pressingRight)
-      self.x += self.maxSpeed;
-    if(self.pressingLeft)
-      self.x -= self.maxSpeed;
+    self.x += self.speedX;
+    self.y =+ self.speedY;
   }
+  return self;
+}
+var Player = function(id){
+  var self = Entity();
+    self.id = id;
+    self.number = "" + Math.floor(10 * Math.random());
+    self.pressingUp = false;
+    self.pressingDown = false;
+    self.pressingRight = false;
+    self.pressingLeft = false;
+    self.maxSpeed =10;
+
+    var super_update = self.update;
+    self.update = function(){
+      self.updateSpeed();
+      super_update();
+    }
+
+  self.updateSpeed = function(){
+    if(self.pressingRight)
+      self.speedX = self.maxSpeed;
+    else if (self.pressingLeft)
+      self.speedX = -self.maxSpeed;
+    else
+      self.speedX = 0;
+
+    if(self.pressingUp)
+      self.speedY = -self.maxSpeed;
+    else if(self.pressingDown)
+      self.speedY-= self.maxSpeed;
+    else
+      self.speedY = 0;
+    }
   return self;
 }
 
