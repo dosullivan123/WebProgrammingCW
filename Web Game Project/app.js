@@ -3,6 +3,8 @@ var express = require('express');
 var app = express();
 var serv = require('http').Server(app);
 
+app.use(express.static('public'));
+
 app.get('/',function(reg, res) {
     res.sendFile(__dirname + '/client/index.html');
 });
