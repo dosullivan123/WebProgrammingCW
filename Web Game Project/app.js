@@ -41,7 +41,7 @@ var Player = function(id){
     self.pressingDown = false;
     self.pressingRight = false;
     self.pressingLeft = false;
-    self.maxSpeed =10;
+    self.maxSpeed = 10;
 
     var super_update = self.update;
     self.update = function(){
@@ -65,6 +65,7 @@ var Player = function(id){
         self.speedY = 0;
       }
       Player.list[id] = self;
+
       return self;
 }
 Player_list = {};
