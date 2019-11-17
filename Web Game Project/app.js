@@ -69,8 +69,8 @@ var Player = function(id){
 }
 Player_list = {};
 Player.onConnect = function(socket){
+  var player = Player(socket.id);
   socket.on('keyPress',function(data){
-    var player = Player(socket.id);
     if(data.inputID === 'up')
       player.pressingUp = data.state;
     else if(data.inputID === 'down')
