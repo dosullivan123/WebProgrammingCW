@@ -1,3 +1,5 @@
+/*
+
 #ctx {
  
   position: absolute;
@@ -7,35 +9,8 @@
   transform: translate(-50%, -50%) ;
   margin: 0;
 }
+*/
 
-#canvasC {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%) ;
-  background-color: #514b48 ;
-  margin-top: 12%;
-  padding: 2%;
-  width: 724px;
-  height: 674px;
-  border-radius: 25px;
-  
-}
-
-#canvasO{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  
-  margin-right: -50%;
-  transform: translate(-50%, -50%) ;
-  margin: 0;
-  background-color: #66cc00;
-  width: 720px;
-  height: 670px;
-  opacity: 0.4;
-}
 @font-face {
   font-family: 'early_gameboyregular';
   src: url('early_gameboy-webfont.woff2') format('woff2'),
