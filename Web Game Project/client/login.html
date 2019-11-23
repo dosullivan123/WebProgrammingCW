@@ -1,0 +1,80 @@
+<html>
+<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/client/logincss.css"/>
+		<title>Alpha:Login</title>
+	</head>
+    <div id="overlay">
+	<body id="loginbody">
+		<div class="login-form">
+			<h1>Alpha Tanks</h1>
+
+			<form action="auth" method="POST">
+				<input type="text" name="username" placeholder="Username" required>
+				<input type="password" name="password" placeholder="Password" required>
+				<input type="submit">
+                <input type="button" id="regB" onclick="unhide(this, 'register') " value="Register">
+			</form>
+		</div>
+        
+        </div>
+        <br>
+        <div id="register" class="hidden">
+            <form action="register" onsubmit="return checkpassword(this);">
+                <div class="container">
+                <h1 class="regtext" >Register</h1>
+                <p class="regtext" >Please fill in this form to create an account.</p>
+                <hr>
+
+                <label class="regtext" for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+                <br> </br>
+                <label class="regtext" for="username"><b>username</b></label>
+                <input type="text" placeholder="Enter username" name="username" required>
+                <br></br>
+                <label  class="regtext" for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+                <br></br>
+                <label class="regtext" for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                <button type="submit" class="registerbtn">Register</button>
+                <hr>
+                </div>
+        </div>
+	</body>
+
+
+
+
+<script type="text/javascript">
+    function unhide(clickedButton, divID) {
+        var item = document.getElementById(divID);
+        if (item) {
+            if(item.className=='hidden'){
+                item.className = 'unhidden' ;
+                clickedButton.value = 'close'
+            }
+            else{
+                item.className = 'hidden';
+                clickedButton.value = 'Register'
+             }
+}}
+
+function alertMessage(messageObject) {
+alert(messageObject);
+return true;
+}
+
+function checkpassword(theForm) {
+	if (theForm.psw.value != theForm.psw-repeat.value)
+	{
+		alert('Those emails don\'t match!');
+		return false;
+	} else {
+		return true;
+	}
+}
+
+
+</script>
+</html>

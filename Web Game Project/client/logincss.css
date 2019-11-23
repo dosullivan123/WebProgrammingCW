@@ -1,0 +1,176 @@
+body {
+    background-color: #bfbab7;
+    background-image: linear-gradient(to bottom right, #bfbab7, #9f9793);
+}
+
+
+#loginbody {
+  background-image: url("tankg.gif" );
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.login-form {
+  width: 350px;
+  height: 300px;
+  margin: 0 auto;
+  font-family: Tahoma, Geneva, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) ;
+  background-color: rgb(151, 151, 151);
+  border-radius: 25px;
+  
+}
+.login-form h1 {
+  text-align: center;
+  color:  #4d4d4d;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+  
+}
+.login-form input[type="password"],
+.login-form input[type="text"] {
+  width: 50%;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  margin-bottom: 15px;
+  box-sizing:border-box;
+  position: relative;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%) ;
+}
+.login-form input[type="submit"] {
+  width: 50%;
+  padding: 15px;
+  background-color:#4d4d4d ;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+  position: relative;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%) ;
+  opacity: 0.9;
+}
+
+#login-form input[type="submit"]:hover {
+    opacity:1;
+}
+
+.hidden{
+  display:none;
+}
+
+.unhidden{
+  display:block;
+}
+
+#regB {
+  width: 25%;
+  padding: 15px;
+  background-color:#4d4d4d ;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+  position: absolute;
+  top: 91%;
+  left: 50%;
+  transform: translate(-50%, -50%) ;
+  opacity: 0.9;
+}
+
+#regB:hover {
+    opacity:1;
+}
+
+
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  width: 25%;
+  height: 85%;
+  margin: 0 auto;
+  position: absolute;
+  background-color: rgb(151, 151, 151);
+  border-radius: 25px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 50%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  position: relative;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+
+  
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color:#4d4d4d;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+.regtext {
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #4d4d4d;
+}
+
+
+.invisible {
+  display: none;
+  visibility: hidden;
+     }
+
+
+#failed {
+  color: red;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 8pt;
+  text-align: center;
+}
+
+#failedpopup {
+  padding: 16px;
+  width: 10%;
+  height: 10%;
+  top: 80%;
+  margin: 0 auto;
+  position: absolute;
+  background-color: rgb(151, 151, 151);
+  border-radius: 25px;
+}
