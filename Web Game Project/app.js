@@ -33,6 +33,7 @@ var Entity = function(){
     return self;
 }
 
+
 var Player = function(id){
     var self = Entity();
     self.id = id;
