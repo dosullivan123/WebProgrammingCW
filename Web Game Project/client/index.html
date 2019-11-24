@@ -2,7 +2,7 @@
 
 
   <head>
-    <link rel="stylesheet" type="text/css" href="client/main.css">
+    <link rel="stylesheet" type="text/css" href="/client/main.css">
   </head>
   <body>
 
@@ -43,6 +43,18 @@
       ctx.font = '30px Arial';
       var socket = io();
 
+      var Img = {};
+      Img.blueBody = new Image();
+      Img.blueBody.src = '/client/img/blueBody.png';
+      Img.greenBody = new Image();
+      Img.greenBody.src = '/client/img/greenBody.png';
+      Img.redBody = new Image();
+      Img.redBody.src = '/client/img/redBody.png';
+      Img.purpleBody = new image();
+      Img.purpleBody.src = '/client/img/redBody.png';
+      Img.bullet.src = '/client/img/bullet.png';
+
+
       var Player = function(initPack){
       var self = {};
       self.id = initPack.id;
@@ -55,10 +67,17 @@
 
       self.draw = function(){
           var hpWidth = 30 * self.hp / self.hpMax;
+          ctx.fillStyle = 'red';
           ctx.fillRect(self.x - hpWidth/2,self.y - 40,hpWidth,4);
-          ctx.fillText(self.number,self.x,self.y);
 
-          ctx.fillText(self.score,self.x,self.y-60);
+          var width = Img.blueBody.width*2;
+          var height = Img.blueBody.height*2;
+
+          ctx.drawImage(Img.blueBody,
+              0,0,Img.blueBody.width,Img.blueBody.height,
+              self.x-width/2,self.y-height/2,width,height);
+
+          //ctx.fillText(self.score,self.x,self.y-60);
       };
 
       Player.list[self.id] = self;
@@ -76,7 +95,12 @@
         self.y = initPack.y;
 
       self.draw = function(){
-          ctx.fillRect(self.x-5,self.y-5,10,10);
+          var width = Img.bullet.width/2;
+          var height = Img.bullet.height/2;
+
+          ctx.drawImage(Img.bullet,
+          720,670,Img.bullet.wdith,Img.bullet.height,
+          self.x-width/2,self.y-height/2,width,height);
       };
 
       Bullet.list[self.id] = self;
@@ -176,18 +200,6 @@
           var angle = Math.atan2(y,x) / Math.PI * 180;
           socket.emit('keyPress',{inputId:'mouseAngle',state:angle});
         };
-
-      var img = {};
-      Img.blueBody = new Image();
-      Img.blueBody.src = '/client/img/blueBody.png';
-      Img.greenBody = new Image();
-      Img.greenBody.src = '/client/img/greenBody.png';
-      Img.redBody = new Image();
-      Img.redBody.src = '/client/img/redBody.png';
-      Img.purpleBody = new image();
-      Img.purpleBody.src = '/client/img/redBody.png';
-
-
 
 
   </script>
