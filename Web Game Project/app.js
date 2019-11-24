@@ -133,8 +133,9 @@ Player.onConnect = function(socket){
     });
 
     socket.emit('init',{
-       player:Player.getAllInitPack(),
-       bullet:Bullet.getAllInitPack(),
+      selfId:socket.id,
+      player:Player.getAllInitPack(),
+      bullet:Bullet.getAllInitPack(),
    });
 };
 

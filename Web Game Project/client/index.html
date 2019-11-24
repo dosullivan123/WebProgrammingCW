@@ -42,7 +42,6 @@
       var ctx = document.getElementById("ctx").getContext("2d");
       ctx.font = '30px Arial';
       var socket = io();
-
       var Player = function(initPack){
       var self = {};
       self.id = initPack.id;
@@ -52,39 +51,32 @@
       self.hp = initPack.hp;
       self.hpMax = initPack.hpMax;
       self.score = initPack.score;
-
       self.draw = function(){
           var hpWidth = 30 * self.hp / self.hpMax;
-          ctx.fillRect(self.x - hpWidth/2,self.y - 40,hpWidth,4);
-          ctx.fillText(self.number,self.x,self.y);
 
-          ctx.fillText(self.score,self.x,self.y-60);
+          ctx.fillStyle = 'red';
+          ctx.fillRect(self.x + 20,self.y - 10,hpWidth,4);
+
+          ctx.fillStyle = 'black';
+          ctx.fillRect(self.x,self.y,50,15);
+          ctx.fillText(self.score,self.x,self.y-10);
       };
-
       Player.list[self.id] = self;
-
-
       return self;
     };
       Player.list = {};
-
-
       var Bullet = function(initPack){
         var self = {};
         self.id = initPack.id;
         self.x = initPack.x;
         self.y = initPack.y;
-
       self.draw = function(){
           ctx.fillRect(self.x-5,self.y-5,10,10);
       };
-
       Bullet.list[self.id] = self;
       return self;
     };
       Bullet.list = {};
-
-
       socket.on('init',function(data){
         //{ player : [{id:123,number:'1',x:0,y:0},{id:1,number:'2',x:0,y:0}], bullet: []}
         for(var i = 0 ; i < data.player.length; i++){
@@ -94,7 +86,6 @@
           new Bullet(data.bullet[i]);
         }
       });
-
       socket.on('update',function(data){
         //{ player : [{id:123,x:0,y:0},{id:1,x:0,y:0}], bullet: []}
         for(var i = 0 ; i < data.player.length; i++){
@@ -122,7 +113,6 @@
           }
         }
       });
-
       socket.on('remove',function(data){
         //{player:[12323],bullet:[12323,123123]}
         for(var i = 0 ; i < data.player.length; i++){
@@ -132,7 +122,6 @@
           delete Bullet.list[data.bullet[i]];
         }
       });
-
       setInterval(function(){
         ctx.clearRect(0,0,720,670);
         for(var i in Player.list)
@@ -140,7 +129,6 @@
         for(var i in Bullet.list)
           Bullet.list[i].draw();
       },40);
-
       document.onkeydown = function(event){
           if(event.keyCode === 68)    //d
               socket.emit('keyPress',{inputId:'right',state:true});
@@ -150,7 +138,6 @@
               socket.emit('keyPress',{inputId:'left',state:true});
           else if(event.keyCode === 87) // w
               socket.emit('keyPress',{inputId:'up',state:true});
-
       };
       document.onkeyup = function(event){
           if(event.keyCode === 68)    //d
@@ -162,8 +149,6 @@
           else if(event.keyCode === 87) // w
               socket.emit('keyPress',{inputId:'up',state:false});
       };
-
-
       document.onmousedown = function(event){
           socket.emit('keyPress',{inputId:'attack',state:true});
         };
@@ -171,24 +156,11 @@
           socket.emit('keyPress',{inputId:'attack',state:false});
         };
       document.onmousemove = function(event){
-          var x = -900 + event.clientX - 8;
-          var y = -550 + event.clientY - 8;
+          var x = -500 + event.clientX - 8;
+          var y = -300 + event.clientY - 8;
           var angle = Math.atan2(y,x) / Math.PI * 180;
           socket.emit('keyPress',{inputId:'mouseAngle',state:angle});
         };
-
-      var img = {};
-      Img.blueBody = new Image();
-      Img.blueBody.src = '/client/img/blueBody.png';
-      Img.greenBody = new Image();
-      Img.greenBody.src = '/client/img/greenBody.png';
-      Img.redBody = new Image();
-      Img.redBody.src = '/client/img/redBody.png';
-      Img.purpleBody = new image();
-      Img.purpleBody.src = '/client/img/redBody.png';
-
-
-
 
   </script>
   </body>
