@@ -20,7 +20,7 @@
         </div>
         <br>
         <div id="register" class="hidden">
-            <form action="register" onsubmit="return checkpassword(this);">
+            <form action="register" method="POST">
                 <div class="container">
                 <h1 class="regtext" >Register</h1>
                 <p class="regtext" >Please fill in this form to create an account.</p>
@@ -35,8 +35,7 @@
                 <label  class="regtext" for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
                 <br></br>
-                <label class="regtext" for="psw-repeat"><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                
                 <button type="submit" class="registerbtn">Register</button>
                 <hr>
                 </div>
