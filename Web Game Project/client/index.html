@@ -15,9 +15,26 @@
       </div>
       </div>
 
+      <!- Container for buttons on the left side ->
+      
+      <div id="overlay" onclick="off()">
+      <div id="text"> Use the the  WASD keys to navigate. <br> </br>          Use the mouse to aim</div>
+      <img id="overlayimg" src="/client/wasd.png" alt="WASD diagram" height="100" width="100">
+      <img id="overlayimg1" src="/client/mouse.png" alt="WASD diagram" height="150" width="100">
+      </div>
+
+      <div id="leftbuttonC">
+      <h5 class="buttontext"> Instructions</h5>
+      <button  onclick="on()">click</button>
+      </div>
+      
+      
+      
+
      
 
 
+  
 
 
 
@@ -27,6 +44,14 @@
 
 
     <script>
+
+      function on() {
+        document.getElementById("overlay").style.display = "block";
+      }
+
+      function off() {
+        document.getElementById("overlay").style.display = "none";
+      }
       var ctx = document.getElementById("ctx").getContext("2d");
       ctx.font = '30px Arial';
       var socket = io();

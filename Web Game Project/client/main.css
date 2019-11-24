@@ -1,15 +1,4 @@
-/*
 
-#ctx {
- 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%) ;
-  margin: 0;
-}
-*/
 
 @font-face {
   font-family: 'early_gameboyregular';
@@ -36,26 +25,6 @@
   left: 2%;
   transform: translate(-5%, -20%);
   
-}
-
-#rightsideC {
-  position: absolute;
-  top: 85%;
-  right: 2%;
-  
-  
-}
-
-#trophyimg {
-  position: absolute;
-  bottom: 5%;
-  right: 1%;
-
-}
-
-#currentchamp {
-  position: relative;
-  right: 5%;
 }
 
 body {
@@ -126,28 +95,53 @@ body {
     
 }
 
-#rightsideC {
-    position: absolute;
-    top: 85%;
-    right: 2%;
-    
-    
-}
-
-#trophyimg {
-    position: absolute;
-    bottom: 5%;
-    right: 1%;
-
-}
-
-#currentchamp {
-    position: relative;
-    right: 5%;
-}
 
 body {
     background-color: #bfbab7;
     background-image: linear-gradient(to bottom right, #bfbab7, #9f9793);
 }
 
+
+#overlay {
+  position: fixed; 
+  display: none;
+  width: 100%; 
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); 
+  z-index: 2; 
+  cursor: pointer; 
+}
+
+#text{
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  font-family: 'early_gameboyregular';
+  font-size: 24pt;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+#overlayimg {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+
+}
+
+
+#overlayimg1 {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+
+}
