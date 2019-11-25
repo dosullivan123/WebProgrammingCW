@@ -92,20 +92,24 @@ app.post('/auth', function(request, response){
       //comparing two passwords
       bcrypt.compare(password,results[0].password, function(err, res) {
         if(res){
+          //if correct password launch game
           request.session.loggedin = true;
           request.session.username = username;
           response.redirect('/loadgame');
         }
         else{
+          //failed login redirect to relogin screen
           response.redirect('/relogin');
         }
         response.end();
       });
     }else{
+      //failed login redirect to relogin screen
       response.redirect('/relogin');
       response.end();
     }
   });
+  //failed login redirect to relogin screen
     } else{
       response.redirect('/relogin');
       response.end();
@@ -115,38 +119,49 @@ app.post('/auth', function(request, response){
 });
       
 
-
-app.get('/',function(req, res) {
-
-    res.sendFile(__dirname + '/client/main.css');
-});
-
+//deals with the register post request 
 
 app.post('/register', function(request, response) {
-
+//used for debugging to console
   console.log(request.body.username);
   console.log(request.body.psw);
   console.log(request.body.email);
-
+//assign the request from the form username and email to a variable
   var username = request.body.username;
   var email = request.body.email;
+  //generate the hashed password from the password from the request
   bcrypt.hash(request.body.psw, salt,function(err, hash) {
+    //check we have a username and email
     if (username && email) {
+      //assign the hashed password to a variable 
       var password = hash;
+      //create a vaules array for sql query
       var values = [username, password, email];
+      //create a varaible with the sql for the  insert query for accounts table
       var sql = 'INSERT INTO Accounts (username, password, email) VALUES (?, ?, ?)';
+      //sql query
       connection.query(sql, values, function(err, results, fields){
+        //log to console for debugging
         console.log(results);
+        //if something went wrong and query return nothing then
         if (err || results === undefined ){
+          //debug to console
           console.log("Oops... Something went wrong with the query")
+          //set logged in to true 
           request.session.loggedin = true;
+          //redirect 
           response.redirect('/home')
+          //end connection
           response.end();
         }
         else {
+        //debug to console 
         console.log('the solution:', results);
+        //set logged in to false 
         request.session.loggedin = false;
+        //redirect 
         response.redirect('/home')
+        //end connection
         response.end();
         }
       });
@@ -158,18 +173,22 @@ app.post('/register', function(request, response) {
 
 
   
-
+//used for the redirect for register 
 
 app.get('/home', function(request, response) {
+  //if logged in alreay then
 	if (request.session.loggedin) {
+    //send to already a user page 
 		response.redirect('/alreadyuser');
 	} else {
+    //else return to login screen
 		response.redirect('back');
-	}
+  }
+  //end connection
 	response.end();
 });
 
-
+//sm342 game 
 var SOCKET_LIST = {};
 
 var Entity = function(){
